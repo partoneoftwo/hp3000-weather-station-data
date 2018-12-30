@@ -8,7 +8,18 @@ and trouble shooting and creative problem solver Olivier Guyotot, https://www.ma
 # BUT THERE IS AN OFFICIAL SOFTWARE PACKAGE, WHY NOT USE IT? #
 Because they just don't work. To be frank Weewx sucks.
 
-#
+
+# KEY FINDING #
+ The output of the temperature sensors are confusing.
+ These are the thresholds 
+ - At temperatures between 0.1 Degrees Celcius as 25.6 Degrees celcius
+ The formula becomes Raw Value / 10
+ - at 0 Degrees Celcius, which becomes the raw value of 256
+ The formula becomes 256-Raw Value
+ - at 25.6 Degrees Celcius, which becomes the raw value of 256
+ The formula becomes 256-Raw Value / 10
+
+
 # HOW TO GET YOUR WEATHER STATION WORKING #
 
 TL;DR: 
