@@ -19,6 +19,27 @@ Because they just don't work. To be frank Weewx sucks.
  - at 25.6 Degrees Celcius, which becomes the raw value of 256
  The formula becomes 256-Raw Value / 10
 
+# HOW TO USE #
+Plug in the weather station MI SOL HP-3000 (or HP-3001) into the
+computer with a USB cable.
+
+Start the program by launching:
+python3 Main-Program/Data-Extract-HP3000.py
+
+
+make sure to have:
+python3
+pip
+pandas
+numpy
+pyusb
+
+apt install python3
+apt install python3-pip
+pip3 install pandas
+pip3 install numpy
+pip3 install pyusb
+
 
 # HOW TO GET YOUR WEATHER STATION WORKING #
 
