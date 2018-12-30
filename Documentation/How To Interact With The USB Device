@@ -1,0 +1,22 @@
+OK, i was able to directly interact with device though NodeJS USB module. But i'd like to thank you for providing the groundwork for it.
+
+I would've never been able to decode the stream of crap coming out of it, without having your code as a reference.
+
+These bits sent to the usb interface gave me what i need: [0x7b, 0x03, 0x40, 0x7d]
+
+Response raw returns:
+123, 0, 34, 97, 0, 248, 24, 0, 204, 31, 127, 255, 255, 127, 255, 255, 127, 255, 255, 127, 255, 255, 127, 255, 255, 64, 125, 0, 64, 125, 44, 0, 100, 64, 125, 0, 17, 52, 2, 19, 91, 111, 50, 180, 118, 22, 252, 75, 130, 231, 38, 145, 108, 52, 62, 225, 213, 101, 135, 36, 224, 37, 85, 166
+
+Sensor 1
+Bit 2: Temp 1
+Bit 3: Humidity 1
+
+Sensor 2
+Bit 5: Temp 2
+Bit 6: Humidity 2
+
+Sensor 3
+Bit 8: Temp 3
+Bit 9: Humidity 3
+
+Source: https://github.com/matthewwall/weewx-hp3000/issues/3
