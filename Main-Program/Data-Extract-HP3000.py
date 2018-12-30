@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# This script is based on the original script done by Olivier Guytot and reverse engineering done by Matthew Wall.
+# This script is based on the original script done by Olivier Guytot and reverse engineering done by Matthew Wall (https://github.com/matthewwall/weewx-hp3000).
 # Courtesy of Olivier Guyotot
 # Source: https://www.mail-archive.com/weewx-user@googlegroups.com/msg09026.html
 #
