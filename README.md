@@ -1,8 +1,8 @@
 # WHAT IS THIS #
 The purpose of this repository is to provide a program toextract data from the HP-3000 weather station.
 
-# Why shouldn't I use the main Weeewx weather station software and accompanying driver? #
-Because they just don't work.
+# BUT THERE IS AN OFFICIAL SOFTWARE PACKAGE, WHY NOT USE IT? #
+Because they just don't work. To be frank Weewx sucks.
 
 #
 # HOW TO GET YOUR WEATHER STATION WORKING #
