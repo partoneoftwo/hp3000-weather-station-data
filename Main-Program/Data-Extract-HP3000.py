@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # Courtesy of Olivier Guyotot
 # Source: https://www.mail-archive.com/weewx-user@googlegroups.com/msg09026.html
 #
@@ -54,14 +54,23 @@
 # Changelog
 # v1 Original script. Written for Python2 by original author Olivier Guyotot
 # v2 Tiny tweaks to make the script run with Python3. Mainly around arguments to print. 28.12.2018 Thomas Frivold
-# v3 Added numpy arrays and tried to add Pandas Dataframes 28.12.2018 Thomas Frivold
+# v3 Added numpy arrays and Pandas Dataframes 28.12.2018 Thomas Frivold
+# v4 Commented out all the pandas stuff. Added Time and Random number, to make it easy to see that the script is running in a loop.
 
 import sys, traceback
 import numpy as np
 import pandas as pd
+import random
+import datetime
 import usb.core, usb.util
 from time import sleep
 
+now = datetime.datetime.now()
+
+print ("Begin transmission")
+print("Time",now.hour,":",now.minute, ":", now.second,"   ","Date:",now.day,".",now.month,".",now.year)
+print("Random Number:",random.randint(1,100000))
+print ("------------------")
 def trimbuffer(buf):
     i = 0
     while i < len(buf):
@@ -110,17 +119,37 @@ def ws3000_write(command):
 #            data = np.array(device.read(0x82, 62, 100))
             data = trimbuffer(data)
             print (data)
+            sleep (1)
             print ("Array size is",(len(data)))
-            print ("Array element 0", (data[0]))
-            print ("Array element 1", (data[1]))
-# Creating a numpy array - that's better
+
+            print ("Channel 1 - Temperature: ", (data[2]))
+            print ("Channel 1 - Humidity Percentage:", (data[3]))
+
+            print ("Channel 2 - Temperature: ", (data[4]))
+            print ("Channel 2 - Humidity Percentage:", (data[6]))
+
+            
+            print ("Channel 3 - Temperature: ", (data[8]))
+            print ("Channel 3 - Humidity Percentage:", (data[9]))
+            
+            print ("Channel 4 - Temperature: ", (data[11]))
+            print ("Channel 4 - Humidity Percentage:", (data[12]))
+
+            print ("Channel 5 - Temperature: ", (data[14]))
+            print ("Channel 5 - Humidity Percentage:", (data[15]))
+            print ("-------")            
+            print ("Negative temperatures, below 0 degrees Celcius - Values are multiplied by 10. Negative temperatures are 256-minus-temperature")
+            print ("Temperatures above 25.6 degrees Celcius, below 0 - Values are multiplied by 10. Temperatures above 25.6 degrees are calculated as (example 29.9 degrees Celcius): 299-minus-256 degrees")
+            print ("-------")            
+
+            # Creating a numpy array - that's better
             np.array(data)
 # Blasting this into a Pandas Dataframe
 #            dates = pd.date_range('20130101', periods=6)
 #            df = pd.DataFrame(data[0])
-            idx = ['Winter', 'Spring', 'Summer', 'Fall']
-            cols = np.arange(2015,2055,5)
-            df = pd.DataFrame(data.T, index=idx, columns=cols)
+#            idx = ['Winter', 'Spring', 'Summer', 'Fall']
+#            cols = np.arange(2015,2055,5)
+#            df = pd.DataFrame(data.T, index=idx, columns=cols)
 #            df(head)
 #            data = pd.Dataframe(data)
 #            data = []
@@ -135,6 +164,8 @@ def ws3000_write(command):
 #                print hex(value)
 #            sleep(1)
 #
+            print ("What kind of data type are each of the array elements?")
+
             for value in data:
                 print ("Type is", type(value))
 #######
@@ -146,4 +177,7 @@ def ws3000_write(command):
 
 print("Starting tests...")
 ws3000_write("")
+print ("------------------")
+print("Time",now.hour,":",now.minute, ":", now.second,"   ","Date:",now.day,".",now.month,".",now.year)
+print("Random Number:",random.randint(1,100000))
 print("End of transmission")
