@@ -42,14 +42,14 @@ or
 
 # WHAT'S WRONG WITH THE OFFICIAL INSTRUCTIONS AND SOFTWARE PACKAGE FROM WEEWX.COM? #
 
-Reason 1. The Weewx.com website looks really nice and invites to a user friendly experience.
+## Reason 1. The Weewx.com website looks really nice and invites to a user friendly experience. ##
 This is not the case. As the package you install does not come with the "USB BRANCH".
 The USB Branch? Yeah that is an undocumented branch of the code which you must yourself find on your quest.
 
 That means that when the package from the main repository, weewx.com, is installed, it does not work with plugins/drivers/extensions that rely on USB code.
 
 
-Reason 2. The third party driver doesn't work. Weewx-hp3000 is borked. 
+## Reason 2. The third party driver doesn't work. Weewx-hp3000 is borked. ##
 The dude who wrote the "third party" driver to the weather station MI SOL HP3000 surely invested his time to write a driver.
 There appears to be plenty of reverse engineering taken place, as it the code revelals bit for bit mapping of the sensor data frames.
 However this really matter very little, when the driver it self is not working.
@@ -89,7 +89,7 @@ This readme fails to mention, and still fails to mention, that in order to use t
 Therefore if a user blindly follows these instructions, then he will hit a "Weeusb Module Not Found" error. 
 
 
-Reason 3. I am frustrated. Let's file an issue. 
+## Reason 3. I am frustrated. Let's file an issue. ##
 
 Issue 1: https://github.com/matthewwall/weewx-hp3000/issues/1
 Author admits that he borked the readme file.
@@ -119,7 +119,7 @@ git checkout usb
 "
 
 
-Reason 4. The plugin still doesn't work
+## Reason 4. The plugin still doesn't work ##
 After following the advice found in the issue mentioned in #3, the driver gets installed and the Weewx engine almost starts up.
 Then it ends in an error, again.
  USBError: Pipe Error
@@ -131,10 +131,7 @@ is slightly different but produces the exact same stack trace: USBError:
 Now there are no more reported issues on the github driver's issue repository, that I can use to triangulate the error and get this thing working.
 Luckily there is a fat thread on the mailing lists. It bears many fruits.
 
-Reason 5.
-
-
-Reason 6. Many people are struggling, and getting started with Weewx is extremely difficult. 
+## Reason 5. Many people are struggling, and getting started with Weewx is extremely difficult. ##
 The documentation is very poor, since it gives inadequate advice and at times leads the user down wrong paths to try and solve problems. 
 
 
@@ -145,5 +142,7 @@ Little did I know poorly it all worked.
 Sure! The Weemx website looks all well calculated.
 Under devices it shows a weather station identical to mine, albeit with a different name.
 
-Ah, no, you cannot use that one.
+Ahh, but no, you cannot use that one. That is for the official one. The Chinese versions of HP-3000 need to use a separate driver.
+
+
 
