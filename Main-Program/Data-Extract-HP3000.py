@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# This script is based on the original script done by Olivier Guytot and reverse engineering done by Matthew Wall (https://github.com/matthewwall/weewx-hp3000).
 # Courtesy of Olivier Guyotot
 # Source: https://www.mail-archive.com/weewx-user@googlegroups.com/msg09026.html
 #
@@ -57,6 +56,15 @@
 # v2 Tiny tweaks to make the script run with Python3. Mainly around arguments to print. 28.12.2018 Thomas Frivold
 # v3 Added numpy arrays and Pandas Dataframes 28.12.2018 Thomas Frivold
 # v4 Commented out all the pandas stuff. Added Time and Random number, to make it easy to see that the script is running in a loop.
+# v5 Added code to calculate the proper temperature values, by dividing by 10. 30.12.2018 20:25
+# The output of the temperature sensors are confusing.
+# These are the thresholds 
+# - At temperatures between 0.1 Degrees Celcius as 25.6 Degrees celcius
+# The formula becomes Raw Value / 10
+# - at 0 Degrees Celcius, which becomes the raw value of 256
+# The formula becomes 256-Raw Value
+# - at 25.6 Degrees Celcius, which becomes the raw value of 256
+# The formula becomes 256-Raw Value / 10
 
 import sys, traceback
 import numpy as np
@@ -123,20 +131,32 @@ def ws3000_write(command):
             sleep (1)
             print ("Array size is",(len(data)))
 
-            print ("Channel 1 - Temperature: ", (data[2]))
+            print ("Channel 1 - Temperature Raw: ", (data[2]))
+            print ("Channel 1 - Temperature Properly:", (data[2])/10)
+            print ("Channel 1 - Temperature Properly Again:", (256-data[2])/10)         
             print ("Channel 1 - Humidity Percentage:", (data[3]))
 
-            print ("Channel 2 - Temperature: ", (data[5]))
+            print ("Channel 2 - Temperature Raw: ", (data[5]))
+            print ("Channel 2 - Temperature Properly:", (data[5])/10)
+            print ("Channel 2 - Temperature Properly Again:", (256-data[5])/10)
             print ("Channel 2 - Humidity Percentage:", (data[6]))
 
             
-            print ("Channel 3 - Temperature: ", (data[8]))
+            print ("Channel 3 - Temperature: Raw:", (data[8]))
+            print ("Channel 3 - Temperature Properly: ", (data[8])/10)
+# note - this sensor needs a different formula than the other sensors to properly calculate.
+# we have to add from 256 and not subtract from 256.
+            print ("Channel 3 - Temperature Properly Again: ", (256+data[8])/10)
             print ("Channel 3 - Humidity Percentage:", (data[9]))
             
-            print ("Channel 4 - Temperature: ", (data[11]))
+            print ("Channel 4 - Temperature Raw: ", (data[11]))
+            print ("Channel 4 - Temperature Properly: ", (data[11])/10)
+            print ("Channel 4 - Tmemperature Properly Again: ", (256-data[11])/10)
             print ("Channel 4 - Humidity Percentage:", (data[12]))
 
-            print ("Channel 5 - Temperature: ", (data[14]))
+            print ("Channel 5 - Temperature Raw: ", (data[14]))
+            print ("Channel 5 - Temperature Properly: ", (data[14])/10)
+            print ("Channel 5 - Temperature Properly Again: ", (256-data[14])/10)
             print ("Channel 5 - Humidity Percentage:", (data[15]))
             print ("-------")            
             print ("Negative temperatures, below 0 degrees Celcius - Values are multiplied by 10. Negative temperatures are 256-minus-temperature")
@@ -165,10 +185,10 @@ def ws3000_write(command):
 #                print hex(value)
 #            sleep(1)
 #
-            print ("What kind of data type are each of the array elements?")
-
-            for value in data:
-                print ("Type is", type(value))
+#            print ("What kind of data type are each of the array elements?")
+#
+#            for value in data:
+#                print ("Type is", type(value))
 #######
     except:
         print ("An error occurred:"), sys.exc_info()
