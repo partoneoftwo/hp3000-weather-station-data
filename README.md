@@ -1,5 +1,9 @@
 # WHAT IS THIS #
-The purpose of this repository is to provide a program toextract data from the HP-3000 weather station.
+The purpose of this repository is to provide a program to extract data from the "Mi Sol HP-3000" weather station purchased from Chinese online retailer Aliexpress.
+It also works for HP-3001 models, others might also be supported.
+The work is based on reverse engineering done by Matthew Wall, https://github.com/matthewwall/weewx-hp3000
+and trouble shooting and creative problem solver Olivier Guyotot, https://www.mail-archive.com/weewx-user@googlegroups.com/msg09026.htm$ .
+
 
 # BUT THERE IS AN OFFICIAL SOFTWARE PACKAGE, WHY NOT USE IT? #
 Because they just don't work. To be frank Weewx sucks.
