@@ -54,7 +54,7 @@
 # Changelog
 # v1 Original script. Written for Python2 by original author Olivier Guyotot
 # v2 Tiny tweaks to make the script run with Python3. Mainly around arguments to print. 28.12.2018 Thomas Frivold
-# v3 Added numpy arrays and Pandas Dataframes 28.12.2018 Thomas Frivold
+# v3 Added numpy arrays and tried to add Pandas Dataframes 28.12.2018 Thomas Frivold
 
 import sys, traceback
 import numpy as np
