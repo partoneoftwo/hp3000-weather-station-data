@@ -126,7 +126,7 @@ def ws3000_write(command):
             print ("Channel 1 - Temperature: ", (data[2]))
             print ("Channel 1 - Humidity Percentage:", (data[3]))
 
-            print ("Channel 2 - Temperature: ", (data[4]))
+            print ("Channel 2 - Temperature: ", (data[5]))
             print ("Channel 2 - Humidity Percentage:", (data[6]))
 
             
